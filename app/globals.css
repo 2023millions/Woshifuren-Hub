@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #f7f5ef; color: #101d1a; font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif; }
+::selection { background: #116b57; color: white; }
+
+.grid-fade {
+  background-image: linear-gradient(rgba(17,107,87,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(17,107,87,.08) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
