@@ -7,6 +7,12 @@ html { scroll-behavior: smooth; }
 body { margin: 0; background: #f7f5ef; color: #101d1a; font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif; }
 ::selection { background: #116b57; color: white; }
 
+@layer components {
+  .eyebrow { @apply text-xs font-bold tracking-[.22em] text-jade; }
+  .section-title { @apply mt-4 text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl; }
+  .section-copy { @apply mt-5 max-w-2xl leading-8 text-black/50; }
+}
+
 .grid-fade {
   background-image: linear-gradient(rgba(17,107,87,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(17,107,87,.08) 1px, transparent 1px);
   background-size: 42px 42px;

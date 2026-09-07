@@ -1,95 +1,149 @@
 import { VideoPlayer } from "@/components/video-player";
 
-const icons = { trend: "↗", sparkle: "✦", arrow: "→", play: "▶", chart: "⌁", list: "☷", shield: "◇", clock: "◷", video: "▻", check: "✓" } as const;
-function Icon({ name, className = "" }: { name: keyof typeof icons; className?: string }) { return <span aria-hidden="true" className={className}>{icons[name]}</span>; }
-
-const lessons = [
-  { no: "01", title: "理解市场与投资者思维", detail: "建立正确的市场认知，找到适合自己的投资方式", time: "32 分钟" },
-  { no: "02", title: "读懂公司与财务数字", detail: "从商业模式到财务报表，判断一家公司的真实价值", time: "45 分钟" },
-  { no: "03", title: "技术分析与市场节奏", detail: "认识趋势、价格与成交量背后的市场语言", time: "38 分钟" },
-  { no: "04", title: "期权基础与策略框架", detail: "从零理解期权，认识风险、收益与常见策略", time: "52 分钟" },
+const freeTopics = [
+  "如何赚取被动收入",
+  "用更少的钱买入股票",
+  "上涨、下跌都能找到策略",
+  "如何在熊市保护股票资产",
+  "熊市如何寻找机会",
+  "选股的3大法则",
+  "如何估价，理解股票未来价格",
+  "怎么看股市图表，找到进场和离场点",
+  "如何判断支撑位 & 阻力位",
+  "用故事方式了解世界投资家的经典案例",
 ];
+
+const journey = [
+  ["第一步", "建立投资基础认知"],
+  ["第二步", "学会选股、估值与技术分析"],
+  ["第三步", "理解牛市与熊市的不同策略"],
+  ["第四步", "认识期权，以及“买家”和“卖家”的思维"],
+  ["第五步", "学习如何把期权应用到投资现金流策略中"],
+];
+
+const advancedTopics = [
+  "巴菲特投资秘诀",
+  "成为富人的秘密",
+  "基本面分析",
+  "技术面分析",
+  "牛市策略",
+  "牛市策略 2.0",
+  "保护资产策略",
+  "期权卖家思维与实战应用",
+];
+
+function Arrow() {
+  return <span aria-hidden="true">→</span>;
+}
 
 export default function Home() {
   return (
-    <main className="overflow-hidden">
+    <main className="overflow-hidden bg-cream">
       <header className="absolute inset-x-0 top-0 z-30 border-b border-white/10 text-white">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8">
-          <a href="#" className="flex items-center gap-3 font-bold tracking-tight">
-            <span className="grid h-9 w-9 place-items-center rounded-full border border-gold/50 text-gold"><Icon name="trend" /></span>
+          <a href="#top" className="flex items-center gap-3 font-bold tracking-tight">
+            <span className="grid h-9 w-9 place-items-center rounded-full border border-gold/50 text-gold" aria-hidden="true">↗</span>
             <span>Woshifuren <span className="font-normal text-white/60">Hub</span></span>
           </a>
-          <nav className="hidden items-center gap-9 text-sm text-white/70 md:flex" aria-label="主导航">
-            <a href="#course" className="transition hover:text-white">课程介绍</a>
-            <a href="#curriculum" className="transition hover:text-white">课程目录</a>
-            <a href="#lesson" className="transition hover:text-white">试听课程</a>
+          <nav className="hidden items-center gap-8 text-sm text-white/65 md:flex" aria-label="主导航">
+            <a href="#free-course" className="transition hover:text-white">免费课程</a>
+            <a href="#journey" className="transition hover:text-white">学习路径</a>
+            <a href="#full-course" className="transition hover:text-white">完整课程</a>
           </nav>
-          <a href="#lesson" className="rounded-full border border-white/25 px-5 py-2.5 text-sm font-medium transition hover:bg-white hover:text-ink">免费试看</a>
+          <a href="#free-lesson" className="rounded-full border border-white/25 px-4 py-2.5 text-sm font-semibold transition hover:bg-white hover:text-ink">免费试听</a>
         </div>
       </header>
 
-      <section className="relative bg-ink pb-24 pt-40 text-white sm:pb-32 sm:pt-48">
-        <div className="grid-fade absolute inset-0 opacity-50" />
-        <div className="absolute -right-24 top-28 h-80 w-80 rounded-full bg-jade/30 blur-3xl" />
+      <section id="top" className="relative bg-ink pb-24 pt-36 text-white sm:pb-32 sm:pt-44">
+        <div className="grid-fade absolute inset-0 opacity-60" />
+        <div className="absolute -right-28 top-20 h-96 w-96 rounded-full bg-jade/25 blur-3xl" />
+        <div className="absolute -left-40 bottom-0 h-72 w-72 rounded-full bg-gold/10 blur-3xl" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.15fr_.85fr]">
           <div>
-            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-gold/25 bg-gold/10 px-4 py-2 text-xs font-medium tracking-widest text-[#ecd3a6]">
-              <Icon name="sparkle" /> 系统化投资教育平台
+            <p className="mb-7 inline-flex items-center gap-2 rounded-full border border-gold/25 bg-gold/10 px-4 py-2 text-xs font-semibold tracking-[.18em] text-[#ecd3a6]">✦ 为中文投资者打造的系统课程</p>
+            <h1 className="max-w-4xl text-5xl font-bold leading-[1.12] tracking-[-0.045em] sm:text-6xl lg:text-7xl">看懂市场，<br /><span className="text-[#d9b979]">建立自己的投资体系</span></h1>
+            <p className="mt-7 max-w-2xl text-base leading-8 text-white/65 sm:text-lg">Woshifuren Hub 帮助普通中文投资者，从认识股票开始，一步一步学习选股、估值、市场策略与风险管理，逐渐建立属于自己的投资与现金流框架。</p>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a href="#free-lesson" className="group inline-flex items-center justify-center gap-3 rounded-full bg-jade px-7 py-4 font-semibold shadow-lg transition hover:-translate-y-0.5 hover:bg-[#17806a]">免费开始学习 <Arrow /></a>
+              <a href="#free-course" className="inline-flex items-center justify-center rounded-full border border-white/20 px-7 py-4 font-semibold text-white/85 transition hover:border-white/50 hover:text-white">看看你会学到什么</a>
             </div>
-            <h1 className="max-w-3xl text-5xl font-bold leading-[1.15] tracking-[-0.04em] sm:text-6xl lg:text-7xl">看懂市场，<br /><span className="text-[#d9b979]">建立自己的投资体系</span></h1>
-            <p className="mt-7 max-w-2xl text-base leading-8 text-white/60 sm:text-lg">不追逐消息，不依赖运气。从底层逻辑到策略实践，用一套清晰、可复用的方法，帮助你做出更理性的投资决策。</p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <a href="#course" className="group inline-flex items-center gap-3 rounded-full bg-jade px-7 py-4 font-semibold shadow-lg transition hover:bg-[#17806a]">探索课程 <Icon name="arrow" className="transition group-hover:translate-x-1" /></a>
-              <a href="#lesson" className="inline-flex items-center gap-3 px-4 py-4 text-sm font-medium text-white/80 hover:text-white"><span className="grid h-10 w-10 place-items-center rounded-full border border-white/25"><Icon name="play" /></span>观看免费课</a>
-            </div>
+            <p className="mt-5 text-xs text-white/35">无需付费 · 先学习，再决定下一步</p>
           </div>
           <div className="relative mx-auto w-full max-w-md lg:ml-auto">
             <div className="absolute -inset-5 rotate-3 rounded-[2rem] border border-white/10" />
-            <div className="relative rounded-[2rem] border border-white/10 bg-white/[.06] p-7 shadow-2xl backdrop-blur">
-              <div className="mb-10 flex items-start justify-between"><span className="rounded-full bg-gold px-3 py-1 text-xs font-bold text-ink">核心课程</span><Icon name="chart" className="text-3xl text-gold" /></div>
-              <p className="text-sm tracking-widest text-white/45">WOSHIFUREN INVESTING</p>
-              <h2 className="mt-3 text-3xl font-semibold leading-tight">从零构建<br />股票投资认知</h2>
+            <div className="relative rounded-[2rem] border border-white/10 bg-white/[.06] p-7 shadow-2xl backdrop-blur sm:p-9">
+              <div className="mb-12 flex items-center justify-between"><span className="rounded-full bg-gold px-3 py-1 text-xs font-bold text-ink">从基础到应用</span><span className="text-3xl text-gold">⌁</span></div>
+              <p className="text-xs tracking-[.2em] text-white/40">WOSHIFUREN INVESTING</p>
+              <h2 className="mt-4 text-3xl font-semibold leading-snug">不靠预测，<br />用框架理解市场</h2>
               <div className="my-8 h-px bg-white/10" />
-              <div className="grid grid-cols-2 gap-5 text-sm"><div><p className="text-2xl font-semibold">4</p><p className="mt-1 text-white/45">核心模块</p></div><div><p className="text-2xl font-semibold">16+</p><p className="mt-1 text-white/45">系统课时</p></div></div>
+              <div className="grid grid-cols-3 gap-3 text-sm"><div><p className="text-xl font-semibold text-gold">选股</p><p className="mt-1 text-white/40">看懂企业</p></div><div><p className="text-xl font-semibold text-gold">策略</p><p className="mt-1 text-white/40">应对市场</p></div><div><p className="text-xl font-semibold text-gold">风控</p><p className="mt-1 text-white/40">保持理性</p></div></div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="course" className="bg-cream py-24 sm:py-32">
+      <section id="free-course" className="bg-cream py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="grid gap-14 lg:grid-cols-2 lg:gap-24">
-            <div><p className="mb-5 text-sm font-bold tracking-[.25em] text-jade">为什么学习这门课</p><h2 className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl">投资不是预测未来，<br />而是管理不确定性</h2></div>
-            <div className="text-base leading-8 text-black/55"><p>面对纷杂的市场信息，真正重要的不是寻找一个“标准答案”，而是建立判断框架。Woshifuren Hub 将复杂的投资知识拆解成清晰、循序渐进的学习路径。</p><p className="mt-4">我们专注于长期有效的认知与方法，帮助你理解机会，也尊重风险。</p></div>
-          </div>
-          <div className="mt-16 grid gap-5 md:grid-cols-3">
-            {[
-              ["list", "结构化路径", "从基础概念到策略应用，按认知规律设计课程，不再碎片化学习。"],
-              ["chart", "实用的框架", "用真实市场视角理解投资，将所学转化为可执行的分析方法。"],
-              ["shield", "风险优先", "不承诺收益，不鼓励投机，把风险意识融入每一个投资决策。"],
-            ].map(([icon, title, text], i) => <article key={title} className="rounded-2xl border border-black/[.07] bg-white p-8 transition hover:-translate-y-1 hover:shadow-soft"><span className="mb-8 grid h-12 w-12 place-items-center rounded-xl bg-jade/10 text-xl text-jade"><Icon name={icon as keyof typeof icons} /></span><p className="mb-3 text-xs font-bold text-gold">0{i+1}</p><h3 className="text-xl font-bold">{title}</h3><p className="mt-3 text-sm leading-7 text-black/50">{text}</p></article>)}
+          <div className="max-w-3xl"><p className="eyebrow">从这里开始</p><h2 className="section-title">免费课程，你会学到什么？</h2><p className="section-copy">把复杂的投资概念拆成容易理解的主题。你不需要任何基础，也能按照清晰的次序开始学习。</p></div>
+          <ol className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {freeTopics.map((topic, index) => (
+              <li key={topic} className="group flex min-h-28 items-start gap-5 rounded-2xl border border-black/[.07] bg-white p-6 shadow-[0_1px_0_rgba(15,35,30,.03)] transition hover:-translate-y-1 hover:border-jade/25 hover:shadow-soft">
+                <span className="text-xs font-bold tracking-wider text-jade/50">{String(index + 1).padStart(2, "0")}</span>
+                <span className="font-semibold leading-7 text-ink">{topic}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section id="journey" className="bg-white py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <div className="text-center"><p className="eyebrow">学习路径</p><h2 className="section-title">循序渐进，把知识连成体系</h2><p className="section-copy mx-auto">不是零散地记住几个技巧，而是从认知、分析到策略应用，建立可持续迭代的投资框架。</p></div>
+          <div className="relative mt-16 grid gap-5 lg:grid-cols-5">
+            <div className="absolute left-[10%] right-[10%] top-8 hidden h-px bg-gradient-to-r from-jade/10 via-jade/50 to-jade/10 lg:block" />
+            {journey.map(([step, title], index) => (
+              <article key={step} className="relative rounded-2xl border border-black/[.07] bg-cream p-6 lg:border-0 lg:bg-transparent lg:p-3 lg:text-center">
+                <span className="relative z-10 inline-grid h-12 w-12 place-items-center rounded-full bg-ink text-sm font-bold text-gold ring-8 ring-white">{index + 1}</span>
+                <p className="mt-6 text-xs font-bold tracking-[.18em] text-jade">{step}</p>
+                <h3 className="mt-3 font-bold leading-7">{title}</h3>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section id="curriculum" className="bg-white py-24 sm:py-32">
-        <div className="mx-auto max-w-5xl px-5 sm:px-8">
-          <div className="mb-14 text-center"><p className="text-sm font-bold tracking-[.25em] text-jade">课程大纲</p><h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">一步一步，构建完整认知</h2><p className="mx-auto mt-5 max-w-xl leading-7 text-black/50">每个模块都围绕一个关键能力展开，让学习路径清楚，让进步真实可见。</p></div>
-          <div className="divide-y divide-black/[.07] border-y border-black/[.07]">
-            {lessons.map((lesson) => <div key={lesson.no} className="group grid gap-4 py-7 sm:grid-cols-[70px_1fr_auto] sm:items-center"><span className="font-semibold text-jade/45">{lesson.no}</span><div><h3 className="text-lg font-bold transition group-hover:text-jade">{lesson.title}</h3><p className="mt-2 text-sm text-black/45">{lesson.detail}</p></div><span className="flex items-center gap-2 text-xs text-black/40"><Icon name="clock" />{lesson.time}</span></div>)}
+      <section id="full-course" className="bg-[#eef1eb] py-24 sm:py-32">
+        <div className="mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
+          <div className="lg:sticky lg:top-12"><p className="eyebrow">完整课程预览</p><h2 className="section-title">继续深入，理解策略背后的逻辑</h2><p className="section-copy">完整课程从投资大师的思维出发，连接基本面、技术面、市场周期与期权应用，帮助你形成更完整的分析视角。</p></div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {advancedTopics.map((topic, index) => <div key={topic} className="flex items-center gap-4 rounded-2xl border border-black/[.07] bg-white p-6"><span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-jade/10 text-sm font-bold text-jade">✓</span><div><p className="text-xs text-black/35">进阶主题 {String(index + 1).padStart(2, "0")}</p><h3 className="mt-1 font-bold">{topic}</h3></div></div>)}
           </div>
         </div>
       </section>
 
-      <section id="lesson" className="bg-ink py-24 text-white sm:py-32">
+      <section id="free-lesson" className="bg-ink py-24 text-white sm:py-32">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <div className="mb-10 flex flex-col justify-between gap-6 sm:flex-row sm:items-end"><div><p className="flex items-center gap-2 text-sm font-bold tracking-[.2em] text-gold"><Icon name="video" /> 免费试听</p><h2 className="mt-4 text-3xl font-bold sm:text-4xl">什么是期权[1]</h2></div><div className="flex gap-5 text-sm text-white/45"><span className="flex items-center gap-2"><Icon name="clock" /> 12 分钟</span><span>模块 04 · 第 01 课</span></div></div>
-          <VideoPlayer title="什么是期权[1]" />
-          <div className="mt-8 grid gap-6 rounded-2xl border border-white/10 bg-white/[.04] p-7 sm:grid-cols-[1fr_auto] sm:items-center"><div><h3 className="font-semibold">本节你将学到</h3><div className="mt-4 flex flex-wrap gap-x-7 gap-y-3 text-sm text-white/55"><span className="flex items-center gap-2"><Icon name="check" className="text-gold" />期权的基本定义</span><span className="flex items-center gap-2"><Icon name="check" className="text-gold" />权利与义务的区别</span><span className="flex items-center gap-2"><Icon name="check" className="text-gold" />常见应用场景</span></div></div><span className="text-xs text-white/30">视频仅供学习测试</span></div>
+          <div className="mb-10 grid gap-6 sm:grid-cols-[1fr_auto] sm:items-end"><div><p className="eyebrow text-gold">免费试听</p><h2 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">先免费学，再决定适不适合你</h2><p className="mt-5 max-w-2xl leading-8 text-white/55">通过一堂免费课程，感受我们的讲解方式，并认识期权在投资框架中的基础概念。</p></div><a href="#video" className="inline-flex items-center justify-center gap-3 rounded-full bg-gold px-6 py-3.5 font-bold text-ink transition hover:bg-[#e5c991]">免费试听课程 <Arrow /></a></div>
+          <div id="video"><VideoPlayer title="什么是期权" /></div>
+          <div className="mt-6 flex flex-col justify-between gap-4 rounded-2xl border border-white/10 bg-white/[.04] p-6 text-sm sm:flex-row sm:items-center"><p className="font-semibold">免费课程 · 什么是期权</p><p className="text-white/40">认识基本定义，以及期权买家与卖家的不同思维</p></div>
         </div>
       </section>
 
-      <footer className="bg-[#091310] py-12 text-white/45"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 px-5 sm:flex-row sm:items-center sm:px-8"><div><div className="flex items-center gap-2 font-bold text-white"><Icon name="trend" className="text-gold" />Woshifuren Hub</div><p className="mt-3 text-xs">以认知为起点，做理性的长期投资者。</p></div><div className="text-xs leading-6 sm:text-right"><p>课程内容仅供教育用途，不构成任何投资建议。</p><p>© 2026 Woshifuren Hub. All rights reserved.</p></div></div></footer>
+      <section className="bg-cream py-24 sm:py-32">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="relative overflow-hidden rounded-[2rem] bg-jade px-7 py-14 text-white shadow-2xl sm:px-14 sm:py-16">
+            <div className="grid-fade absolute inset-0 opacity-30" /><div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-gold/20 blur-3xl" />
+            <div className="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
+              <div><p className="text-xs font-bold tracking-[.22em] text-gold">准备好继续了吗？</p><h2 className="mt-4 text-3xl font-bold sm:text-5xl">Woshifuren Hub 完整课程</h2><p className="mt-5 max-w-2xl leading-8 text-white/65">系统学习投资分析与策略应用，在尊重风险的前提下，逐步完善自己的投资与现金流框架。</p></div>
+              <div className="lg:text-right"><p className="text-sm text-white/55">早鸟价</p><p className="mt-1 text-4xl font-bold text-gold">S$398</p><a href="#full-course" className="mt-6 inline-flex items-center justify-center gap-3 rounded-full bg-white px-7 py-4 font-bold text-ink transition hover:-translate-y-0.5">了解完整课程 <Arrow /></a></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-[#091310] py-12 text-white/45">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8"><div className="flex flex-col justify-between gap-6 border-b border-white/10 pb-8 sm:flex-row sm:items-center"><div className="flex items-center gap-2 font-bold text-white"><span className="text-gold">↗</span>Woshifuren Hub</div><p className="text-xs">以认知为起点，做理性的长期投资者。</p></div><div className="flex flex-col justify-between gap-5 pt-7 text-xs leading-6 sm:flex-row"><p className="max-w-4xl">Woshifuren Hub 提供的是投资教育内容，不构成任何投资、财务或证券买卖建议。投资涉及风险，任何投资决定应由学员自行判断并承担相应风险。课程不保证任何投资收益。</p><p className="shrink-0">© 2026 Woshifuren Hub</p></div></div>
+      </footer>
     </main>
   );
 }
